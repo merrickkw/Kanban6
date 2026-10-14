@@ -13,7 +13,10 @@ IT PMO Kanban board demo (single-file vanilla HTML/CSS/JS). It's a training and 
 - **Move tasks** by drag and drop, or with the "Move ▸" menu on each card (works with the keyboard).
 - **Delete tasks**, with a confirmation step.
 - **Filters** by project/workstream, assignee (text match) and priority.
-- **Summary strip** with totals across all tasks, including how many are overdue.
+- **Large KPI tiles** for completion %, Backlog, In Progress, Blocked, Done and Overdue, across all tasks.
+- **Status colour coding:** each status has its own colour and icon on columns, card edges, status chips and charts.
+- **Project status visuals:** a status donut, an overall delivery bar and a stacked status bar per project (inline SVG).
+- **Three designs** selectable from the header dropdown: Professional, Fun and Futuristic. The choice is memory only and resets on refresh.
 - **Overdue highlighting** on cards whose due date has passed. Seed due dates are relative to today, so some are always overdue.
 - **Email notification** via [FormSubmit](https://formsubmit.co/) when a task is added. If sending fails, you only see a warning; the board keeps working.
 
@@ -32,6 +35,7 @@ Board data lives in memory only. Refreshing the page resets it to the seeded dem
 - Vanilla HTML, CSS and JavaScript in one file (`index.html`).
 - No frameworks, bundlers, npm packages, CDN scripts, web fonts or image files. It uses the system font stack and inline SVG/Unicode for icons.
 - The only network call is the FormSubmit AJAX endpoint.
+- Hardened: a strict Content-Security-Policy meta tag pins the inline script and style by SHA-256 hash and limits connections to formsubmit.co; input is sanitised and validated, and task creation is rate limited and capped. After editing the inline script or style, recompute the hashes in the CSP meta tag.
 
 ## Deployment
 
