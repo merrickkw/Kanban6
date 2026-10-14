@@ -4,6 +4,8 @@ IT PMO Kanban board demo (single-file vanilla HTML/CSS/JS). It's a training and 
 
 **Live demo:** https://merrickkw.github.io/Kanban6/
 
+![IT PMO Kanban board showing Backlog, In Progress, Blocked and Done columns with seeded demo tasks](docs/screenshot.png)
+
 ## Features
 
 - **Four columns:** Backlog, In Progress, Blocked, Done. Each column shows a count of the tasks currently visible in it.

@@ -1,7 +1,7 @@
 ---
 description: Security-scan, then push to GitHub, update README + repo About, and deploy GitHub Pages via Actions
 argument-hint: "[owner/repo or repo URL] [branch]"
-allowed-tools: Bash(git:*), Bash(gh:*), Bash(gitleaks:*), Read, Write, Edit, Glob, Grep
+allowed-tools: Bash(git:*), Bash(gh:*), Bash(gitleaks:*), Bash(msedge:*), mcp__playwright__*, Read, Write, Edit, Glob, Grep
 ---
 
 # Publish to GitHub
@@ -45,6 +45,17 @@ Read the existing `README.md`, `CLAUDE.md`, and `index.html`, then write a READM
 - Disclaimer (fictitious data, demo use only).
 
 Do not put the notification email address in the README.
+
+### 2a. Capture a screenshot for the README
+
+1. Use the Playwright MCP tools: `browser_resize` to 1440×1000, `browser_navigate` to `file:///<absolute path to>/index.html`, wait for the board to render, then `browser_take_screenshot` (viewport, PNG) and save it as `docs/screenshot.png` (overwrite any existing one).
+2. If the Playwright MCP server is unavailable (it needs Node.js/`npx`), fall back to headless Edge or Chrome:
+   `msedge --headless=new --disable-gpu --hide-scrollbars --window-size=1440,1000 --screenshot="<abs path>\docs\screenshot.png" "file:///<abs path>/index.html"`
+3. Read the image to confirm it shows the board with the seeded tasks, and that it shows no email address or other personal data.
+4. Make sure the README shows it right under the **Live demo** link:
+   `![IT PMO Kanban board showing Backlog, In Progress, Blocked and Done columns with seeded demo tasks](docs/screenshot.png)`
+
+`docs/screenshot.png` is a repo asset for the README only. The Pages workflow does not publish it, and `index.html` must not reference it.
 
 ## 3. Create / update the GitHub Pages workflow
 
