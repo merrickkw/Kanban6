@@ -1,0 +1,19 @@
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
+# Local data
+*.sqlite
+*.db
+
+# OS / editor
+.DS_Store
+Thumbs.db
